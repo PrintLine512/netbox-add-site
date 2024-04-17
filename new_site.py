@@ -30,6 +30,9 @@ class NewBranchScript(Script):
             'group_id': '$tenant_group'
         }
     )
+    physical_address = StringVar(
+        description="Физический адрес офиса"
+    )
     manufacturer_router = ObjectVar(
         model=Manufacturer,
         required=False
