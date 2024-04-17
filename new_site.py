@@ -25,6 +25,7 @@ class NewBranchScript(Script):
     )
     tenant = ObjectVar(
         model=Tenant,
+        description="Организация",
         query_params={
             'group_id': '$tenant_group'
         }
@@ -39,6 +40,9 @@ class NewBranchScript(Script):
         query_params={
             'manufacturer_id': '$manufacturer_router'
         }
+    )
+    public_ip = IPAddressWithMaskVar(
+        description="123"
     )
     manufacturer_switch = ObjectVar(
         model=Manufacturer,
