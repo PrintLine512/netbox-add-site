@@ -42,7 +42,11 @@ class NewBranchScript(Script):
         }
     )
     public_ip = IPAddressWithMaskVar(
-        description="123"
+        description="Публичный IP-адрес",
+        required=False
+    )
+    private_ip = IPAddressWithMaskVar(
+        description="Приватный (внутренний) IP-адрес"
     )
     manufacturer_switch = ObjectVar(
         model=Manufacturer,
