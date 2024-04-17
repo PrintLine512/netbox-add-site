@@ -19,7 +19,7 @@ class NewBranchScript(Script):
         description="Имя латиницей, из спец. символов \"-\""
     )
     tenant = ObjectVar(
-        model=Tenants
+        model=tenancy.tenant
     )
     manufacturer_router = ObjectVar(
         model=Manufacturer,
