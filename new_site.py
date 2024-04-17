@@ -2,7 +2,7 @@ from django.utils.text import slugify
 
 from dcim.choices import DeviceStatusChoices, SiteStatusChoices
 from dcim.models import Device, DeviceRole, DeviceType, Manufacturer, Site
-from tenancy.models import Tenant
+from tenancy.models import Tenant, TenantGroup
 from extras.scripts import *
 
 
@@ -19,8 +19,14 @@ class NewBranchScript(Script):
     slug = StringVar(
         description="Имя латиницей, из спец. символов \"-\""
     )
+    tenant_group = ObjectVar(
+        model=TenantGroup
+    )
     tenant = ObjectVar(
-        model=Tenant
+        model=Tenant,
+        query_params={
+            'group': '$tenant_group'
+        }
     )
     manufacturer_router = ObjectVar(
         model=Manufacturer,
