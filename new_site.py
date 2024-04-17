@@ -15,7 +15,7 @@ class NewBranchScript(Script):
     site_name = StringVar(
         description="Название офиса"
     )
-    slug_name = StringVar(
+    slug = StringVar(
         description="Имя латиницей, из спец. символов \"-\""
     )
     switch_count = IntegerVar(
@@ -38,7 +38,6 @@ class NewBranchScript(Script):
         # Create the new site
         site = Site(
             name=data['site_name'],
-            slug=slugify(data['site_name']),
             status=SiteStatusChoices.STATUS_PLANNED
         )
         site.full_clean()
