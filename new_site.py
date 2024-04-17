@@ -26,7 +26,7 @@ class NewBranchScript(Script):
     tenant = ObjectVar(
         model=Tenant,
         query_params={
-            'group': '$tenant_group'
+            'group_id': '$tenant_group'
         }
     )
     manufacturer_router = ObjectVar(
