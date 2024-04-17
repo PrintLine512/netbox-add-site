@@ -18,10 +18,21 @@ class NewBranchScript(Script):
     slug = StringVar(
         description="Имя латиницей, из спец. символов \"-\""
     )
-    switch_count = IntegerVar(
+    manufacturer_router = ObjectVar(
+        model=Manufacturer,
+        required=False
+    )
+    router_model = ObjectVar(
+        description="Модель роутера",
+        model=DeviceType,
+        query_params={
+            'manufacturer_id': '$manufacturer_router'
+        }
+    )
+    router_count = IntegerVar(
         description="Количество свитчей"
     )
-    manufacturer = ObjectVar(
+    manufacturer_switch = ObjectVar(
         model=Manufacturer,
         required=False
     )
@@ -29,8 +40,11 @@ class NewBranchScript(Script):
         description="Модель свитча",
         model=DeviceType,
         query_params={
-            'manufacturer_id': '$manufacturer'
+            'manufacturer_id': '$manufacturer_switch'
         }
+    )
+    switch_count = IntegerVar(
+        description="Количество свитчей"
     )
 
     def run(self, data, commit):
