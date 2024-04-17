@@ -34,10 +34,11 @@ class NewBranchScript(Script):
     )
 
     def run(self, data, commit):
-        slug = data['slug']
+        
         # Create the new site
         site = Site(
             name=data['site_name'],
+            slug = data['slug'],
             status=SiteStatusChoices.STATUS_PLANNED
         )
         site.full_clean()
