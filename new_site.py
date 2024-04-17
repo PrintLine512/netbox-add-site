@@ -18,6 +18,9 @@ class NewBranchScript(Script):
     slug = StringVar(
         description="Имя латиницей, из спец. символов \"-\""
     )
+    tenant = ObjectVar(
+        model=Tenant
+    )
     manufacturer_router = ObjectVar(
         model=Manufacturer,
         required=False
@@ -28,9 +31,6 @@ class NewBranchScript(Script):
         query_params={
             'manufacturer_id': '$manufacturer_router'
         }
-    )
-    router_count = IntegerVar(
-        description="Количество свитчей"
     )
     manufacturer_switch = ObjectVar(
         model=Manufacturer,
@@ -53,6 +53,7 @@ class NewBranchScript(Script):
         site = Site(
             name=data['site_name'],
             slug = data['slug'],
+            tenant = data['tenant'],
             status=SiteStatusChoices.STATUS_PLANNED
         )
         site.full_clean()
