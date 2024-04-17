@@ -8,22 +8,22 @@ from extras.scripts import *
 class NewBranchScript(Script):
 
     class Meta:
-        name = "New Branch"
-        description = "Provision a new branch site"
+        name = "Новый офис"
+        description = "Добавить новый офис"
         field_order = ['site_name', 'switch_count', 'switch_model']
 
     site_name = StringVar(
-        description="Name of the new site"
+        description="Название офиса"
     )
     switch_count = IntegerVar(
-        description="Number of access switches to create"
+        description="Количество свитчей"
     )
     manufacturer = ObjectVar(
         model=Manufacturer,
         required=False
     )
     switch_model = ObjectVar(
-        description="Access switch model",
+        description="Модель свитча",
         model=DeviceType,
         query_params={
             'manufacturer_id': '$manufacturer'
