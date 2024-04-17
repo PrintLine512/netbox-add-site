@@ -73,18 +73,30 @@ class NewBranchScript(Script):
             name=data['site_name'],
             slug = data['slug'],
             tenant = data['tenant'],
+            physical_address = data['physical_address'],
             status=SiteStatusChoices.STATUS_PLANNED
         )
         site.full_clean()
         site.save()
         self.log_success(f"Created new site: {site}")
 
+        router_role = DeviceRole.objects.get(name='Router')
+        router = Device(
+                device_type=data['router_model'],
+                name=f'{site.slug.upper()}-R1',
+                site=site,
+                status=DeviceStatusChoices.STATUS_PLANNED,
+                device_role=router_role
+            )
+        router.save()
+        self.log_success(f"Created new router: {router}")
+        
         # Create access switches
         switch_role = DeviceRole.objects.get(name='Access Switch')
         for i in range(1, data['switch_count'] + 1):
             switch = Device(
                 device_type=data['switch_model'],
-                name=f'{site.slug}-switch{i}',
+                name=f'{site.slug}-SW{i}',
                 site=site,
                 status=DeviceStatusChoices.STATUS_PLANNED,
                 device_role=switch_role
