@@ -10,10 +10,13 @@ class NewBranchScript(Script):
     class Meta:
         name = "Новый офис"
         description = "Добавить новый офис"
-        field_order = ['site_name', 'switch_count', 'switch_model']
+        #field_order = ['site_name', 'switch_count', 'switch_model']
 
     site_name = StringVar(
         description="Название офиса"
+    )
+    slug_name = StringVar(
+        description="Имя латиницей, из спец. символов \"-\""
     )
     switch_count = IntegerVar(
         description="Количество свитчей"
