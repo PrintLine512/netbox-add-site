@@ -1,8 +1,8 @@
 class NewBranchScript(Script):
 
     class Meta:
-        name = "New Branch"
-        description = "Provision a new branch site"
+        name = "Test New Branch"
+        description = "Test Provision a new branch site"
 
     site_name = StringVar(
         description="Name of the new site"
