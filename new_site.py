@@ -34,7 +34,7 @@ class NewBranchScript(Script):
     )
 
     def run(self, data, commit):
-
+        slug = data['slug']
         # Create the new site
         site = Site(
             name=data['site_name'],
