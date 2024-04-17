@@ -2,7 +2,7 @@ from django.utils.text import slugify
 
 from dcim.choices import DeviceStatusChoices, SiteStatusChoices
 from dcim.models import Device, DeviceRole, DeviceType, Manufacturer, Site
-from tenancy.models import Tenants
+from tenancy.models import Tenant
 from extras.scripts import *
 
 
@@ -20,7 +20,7 @@ class NewBranchScript(Script):
         description="Имя латиницей, из спец. символов \"-\""
     )
     tenant = ObjectVar(
-        model=Tenants
+        model=Tenant
     )
     manufacturer_router = ObjectVar(
         model=Manufacturer,
